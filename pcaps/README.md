@@ -31,24 +31,10 @@ smash.txt
 
 1. There are 77,873 packets in this set.
 
-1.      
-            username: chris@digitalinterlude.com
-            password: Volrathw69
-            server IP: 75.126.75.131
-            domain: http://mail.si-sv3231.com
-            port: 110
-            valid
+1.
 
-            username: cisco
-            password: 185 12345d
-            server IP: 200.60.17.1
-            domain:
-            port: 23
-            invalid
-
-            username: cisco
-            password: 185 122333
-            server IP: 200.60.17.1
-            domain:
-            port: 23
-            invalid
+| Username | Password | Server IP | Domain | Port | Valid? |
+| :------: | :------: | :--------:| :----: | :--: | :----: |
+| chris@digitalinterlude.com | Volrathw69 | 75.126.75.131 | http://mail.si-sv3231.com | 110 | Yes |
+| cisco | 185 12345d | 200.60.17.1 | - | 23 | No |
+| cisco | 185 122333 | 200.60.17.1 |  - | 23 | No |
