@@ -63,4 +63,6 @@ may be valid (the stream gets cut off).
     legitimate. For number 9, it's ambiguous whether the login is valid or not as
     the stream is cut off before the server response.
 
-1. I would say...
+1. To these users I would suggest using secure alternatives to clear-text
+protocols, e.g. the encrypted alternative to telnet would be SSH. You can also
+change your settings in most mail clients use SSL (Secure Socket Layer) to encrypt communication over POP3/IMAP.
