@@ -7,7 +7,7 @@ Assignment 1: Packet Sleuthing
 
 1. There are 1,503 packets in this set.
 
-1. Protocol: FTP (on port 20)
+1. Protocol: FTP (on port 21)
 
 1. FTP is insecure because credentials and all transferred files are sent to the server in plaintext. Therefore, anyone intercepting network packets can read the username and password and reconstruct the files.
 
