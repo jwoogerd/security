@@ -9,9 +9,8 @@
 require 'packetfu'
 require 'optparse'
 
-def live_sniff(iface)
+def live_sniff(iface = 'eth0')
     # capture a live stream of network packets (and print the result, for now)
-    iface ||= 'eth0'
     cap = PacketFu::Capture.new(:start => true, :iface => iface, :promisc => true)
     cap.stream.each do |p|
         pkt = PacketFu::Packet.parse p
@@ -41,7 +40,7 @@ def main()
     if options[:log]
         log_sniff(options[:filename]) 
     else 
-        live_sniff('en0')
+        live_sniff()
     end
 end
 
