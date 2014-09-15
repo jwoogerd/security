@@ -15,20 +15,22 @@ def live_sniff(iface = 'eth0')
     cap.stream.each do |p|
         pkt = PacketFu::Packet.parse p
         if pkt.is_tcp?
+	    payload = Base64.encode64(pkt.payload)
     	    flags = pkt.tcp_flags
+	    print "flags #{flags} source #{pkt.ip_saddr}"
     	    if flags.urg == 0 && flags.ack == 0 && flags.psh == 0 &&
-    	       flags.rst == 0 && flags.syn == 0 && flags.fin == 0 && pkt.tcp_dport == 0
-                print_incident("NULL scan", pkt.ip_saddr, "TCP", pkt.payload)
+    	       flags.rst == 0 && flags.syn == 0 && flags.fin == 0
+                print_incident("NULL scan", pkt.ip_saddr, "TCP", payload)
     	    end
     	    if flags.urg == 1 && flags.ack == 1 && flags.psh == 1 &&
-    	       flags.rst == 1 && flags.syn == 1 && flags.fin == 1 && pkt.tcp_dport == 0 
-                print_incident("XMAS scan", pkt.ip_saddr, "TCP", pkt.payload)
+    	       flags.rst == 1 && flags.syn == 1 && flags.fin == 1 
+                print_incident("XMAS scan", pkt.ip_saddr, "TCP", payload)
     	    end
             if pkt.payload[/4\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/] ||
                 pkt.payload[/5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/] ||
                 pkt.payload[/6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/] ||
                 pkt.payload[/3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}/]
-                print "ALERT: Credit card leaked in the clear from #{pkt.ip_saddr} (HTTP) (#{pkt.payload})!"
+                print "ALERT: Credit card leaked in the clear from #{pkt.ip_saddr} (HTTP) (#{payload})!"
             end
         end
     end
@@ -79,7 +81,7 @@ def main()
     option = ARGV[0]
     filename = ARGV[1]
     if option == nil
-        live_sniff('en0')
+        live_sniff()
     end
     if option == '-r'
         if filename == nil
