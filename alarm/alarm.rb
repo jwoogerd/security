@@ -23,8 +23,8 @@ def live_sniff(iface)
 end
 
 
-def log_sniff()
-    print "log sniff"
+def log_sniff(filename)
+    print "log sniff #{filename}"
 end
 
 def main()
@@ -39,7 +39,7 @@ def main()
     end.parse!
 
     if options[:log]
-        log_sniff() 
+        log_sniff(options[:filename]) 
     else 
         live_sniff('en0')
     end
