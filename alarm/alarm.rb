@@ -23,11 +23,37 @@ end
 
 
 def log_sniff(filename)
-    print "log sniff #{filename}"
+    File.open(filename, "r") do |f|
+        f.each_line do |line|
+            check_line(line)
+        end
+    end
+end
+
+def check_line(line)
+    # regex between quotes from this so: http://stackoverflow.com/questions/171480/
+    incident = {
+        :source   => line[/[^ ]*/], # matches up to first whitespace
+        :request  => line[/(["'])(?:(?=(\\?))\2.)*?\1/], # matches between quotes 
+        :status   => line[/ 4[0-9][0-9] /]
+    }
+    incident[:protocol] = incident[:request].lines(" ")[-1][/[A-Z]*/]
+
+    if incident[:status] != nil
+        print_incident("HTTP error", incident[:source], incident[:protocol],
+            incident[:request])
+    end
+end
+
+$incident_number = 0
+def print_incident(attack, source, protocol, payload)
+    print "#{$incident_number}. ALERT: #{attack} is detected from " +
+          "#{source} (#{protocol}) (#{payload})!\n"
+    $incident_number += 1
 end
 
 def main()
-    options = {:log => false}
+    options = {:log => false, :filename => nil}
 
     OptionParser.new do |opts|
         opts.banner = "Usage: alarm.rb [options]"
