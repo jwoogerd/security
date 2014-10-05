@@ -34,14 +34,23 @@ def check_line(line)
     # regex between quotes from this so: http://stackoverflow.com/questions/171480/
     incident = {
         :source   => line[/[^ ]*/], # matches up to first whitespace
-        :request  => line[/(["'])(?:(?=(\\?))\2.)*?\1/], # matches between quotes 
-        :status   => line[/ 4[0-9][0-9] /]
+        :payload  => line[/(["'])(?:(?=(\\?))\2.)*?\1/], # matches between quotes 
+        :status   => line[/ [1-5][0-9][0-9] /],
+        :nmap     => line[/Nmap/]
     }
-    incident[:protocol] = incident[:request].lines(" ")[-1][/[A-Z]*/]
+    incident[:protocol] = incident[:payload].lines(" ")[-1][/[A-Z]*/]
 
-    if incident[:status] != nil
+    if incident[:status][/4[0-9][0-9]/]
         print_incident("HTTP error", incident[:source], incident[:protocol],
-            incident[:request])
+            incident[:payload])
+    end
+    if incident[:nmap]
+        print_incident("Nmap scan", incident[:source], incident[:protocol],
+            incident[:payload])
+    end
+    if incident[:payload][/\\x[0-9,A-F][0-9, A-F]/] 
+        # TODO filter out none shell code
+        puts incident[:payload]
     end
 end
 
