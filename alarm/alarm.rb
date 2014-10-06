@@ -7,7 +7,7 @@
 # to run: sudo ruby alarm.rb || sudo ruby alarm.rb -r <web_server_log>
 
 require 'packetfu'
-require 'optparse'
+require 'base64'
 
 def live_sniff(iface = 'eth0')
     # capture a live stream of network packets (and print the result, for now)
@@ -70,20 +70,19 @@ def print_incident(attack, source, protocol, payload)
 end
 
 def main()
-    options = {:log => false, :filename => nil}
-
-    OptionParser.new do |opts|
-        opts.banner = "Usage: alarm.rb [options]"
-        opts.on("-r", "--file filename") do |filename| 
-            options[:log] = true
-            options[:filename] = filename
-        end
-    end.parse!
-
-    if options[:log]
-        log_sniff(options[:filename]) 
-    else 
+    option = ARGV[0]
+    filename = ARGV[1]
+    if option == nil
         live_sniff('en0')
+    end
+    if option == '-r'
+        if filename == nil
+            puts "Usage: sudo ruby alarm.rb || sudo ruby alarm.rb -r <web_server_log>"
+            return
+        end
+        log_sniff(filename)
+    else 
+        puts "Usage: sudo ruby alarm.rb || sudo ruby alarm.rb -r <web_server_log>"
     end
 end
 
