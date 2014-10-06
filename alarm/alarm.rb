@@ -48,9 +48,10 @@ def check_line(line)
         print_incident("Nmap scan", incident[:source], incident[:protocol],
             incident[:payload])
     end
-    if incident[:payload][/\\x[0-9,A-F][0-9, A-F]/] 
-        # TODO filter out none shell code
-        puts incident[:payload]
+    if incident[:payload][/\\x[0-9, A-F][0-9, A-F]/] && incident[:payload][/^((?!HTTP).)*$/]
+        # TODO: protocol for shellcode?
+        print_incident("Shellcode", incident[:source], incident[:protocol],
+            incident[:payload])
     end
 end
 
