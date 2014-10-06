@@ -14,9 +14,16 @@ def live_sniff(iface = 'eth0')
     cap = PacketFu::Capture.new(:start => true, :iface => iface, :promisc => true)
     cap.stream.each do |p|
         pkt = PacketFu::Packet.parse p
-        if pkt.is_ip?
-            packet_info = [pkt.ip_saddr, pkt.ip_daddr, pkt.size, pkt.proto.last]
-            print "#{packet_info}"
+        if pkt.is_tcp?
+	    flags = pkt.tcp_flags
+	    if flags.urg == 0 && flags.ack == 0 && flags.psh == 0 &&
+	       flags.rst == 0 && flags.syn == 0 && flags.fin == 0 
+		print_incident("NULL scan", pkt.ip_saddr, "TCP", pkt.payload)
+	    end
+	    if flags.urg == 1 && flags.ack == 1 && flags.psh == 1 &&
+	            flags.rst == 1 && flags.syn == 1 && flags.fin == 1 
+		print_incident("XMAS scan", pkt.ip_saddr, "TCP", pkt.payload)
+	    end
         end
     end
 end
