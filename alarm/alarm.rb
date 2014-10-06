@@ -58,7 +58,7 @@ def check_line(line)
     if incident[:payload][/\\x[0-9, A-F][0-9, A-F]/] && incident[:payload][/^((?!HTTP).)*$/]
         # TODO: protocol for shellcode?
         print_incident("Shellcode", incident[:source], incident[:protocol],
-            incident[:payload])
+            Base64.encode64(incident[:payload]))
     end
 end
 
