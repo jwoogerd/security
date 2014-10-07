@@ -6,7 +6,6 @@ To do:
 - report just once for packets to all ports
 - test credit card info in the clear? 
 
-
 - test log file analysis
 - shell code protocol?
 - check shell code regex   
@@ -20,5 +19,7 @@ To do:
 ---
 
 Identify what aspects of the work have been correctly implemented and what have not.  
-Identify anyone with whom you have collaborated or discussed the assignment.  
-Say approximately how many hours you have spent completing the assignment.
+
+I have not collaborated with anyone on this assignment (so far). I have spent 	about 8-10 hours on this assignment.
+
+*I'm using one token for this assignment -- now due Wednesday, October 8th at midnight.*
