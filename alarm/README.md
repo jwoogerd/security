@@ -3,9 +3,8 @@ ___
 
 To do:
 
-- payload for nmap scans?
 - report just once for packets to all ports
-- credit card info in the clear  
+- test credit card info in the clear? 
 
 
 - test log file analysis

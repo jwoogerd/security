@@ -15,8 +15,8 @@ def live_sniff(iface = 'eth0')
     cap.stream.each do |p|
         pkt = PacketFu::Packet.parse p
         if pkt.is_tcp?
-	    payload = Base64.encode64(pkt.payload)
-    	    flags = pkt.tcp_flags
+            flags = pkt.tcp_flags
+            payload = Base64.encode64(pkt.payload)
 	    print "flags #{flags} source #{pkt.ip_saddr}"
     	    if flags.urg == 0 && flags.ack == 0 && flags.psh == 0 &&
     	       flags.rst == 0 && flags.syn == 0 && flags.fin == 0
