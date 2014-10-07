@@ -24,6 +24,12 @@ def live_sniff(iface = 'eth0')
     	       flags.rst == 1 && flags.syn == 1 && flags.fin == 1 && pkt.tcp_dport == 0 
                 print_incident("XMAS scan", pkt.ip_saddr, "TCP", pkt.payload)
     	    end
+            if pkt.payload[/4\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/] ||
+                pkt.payload[/5\d{3}(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/] ||
+                pkt.payload[/6011(\s|-)?\d{4}(\s|-)?\d{4}(\s|-)?\d{4}/] ||
+                pkt.payload[/3\d{3}(\s|-)?\d{6}(\s|-)?\d{5}/]
+                print "ALERT: Credit card leaked in the clear from #{pkt.ip_saddr} (HTTP) (#{pkt.payload})!"
+            end
         end
     end
 end
