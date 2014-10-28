@@ -1,0 +1,106 @@
+SQL injections
+-----
+
+Craft input that mangles a SQL statement to return or do unexpected
+or undesirable things
+
+
+Attack anywhere that allows for user input (web forms (e.g., search,
+login screens), URL parameters); web pages or web applications that 
+use a SQL database (examples: MySQL, Postgres, Oracle, etc...)
+
+Example: A SQL database table named 'movies'
+
+id | title                | actor_actress
+=========================================
+1  | Star Wars Episode IV | Mark Hamill
+2  | Star Wars Episode V  | Harrison Ford
+3  | Star Wars Episode VI | Carrie Fisher
+4  | Star Wars Episode IV | Harrison Ford
+5  | The Fugitive         | Harrison Ford
+
+
+SELECT * FROM movies WHERE actor_actress = 'Mark Hamill'
+
+** Strings are single-quoted
+
+
+query = "SELECT title FROM movies WHERE actor_actress = '$entry'"
+
+What happens if $entry is ' ?
+
+query = "SELECT title FROM movies WHERE actor_actress = '''"
+
+$entry is whocares' or '1' = '1
+
+
+Need to know names of database
+    1. Guess - common names are 'users', 'account', etc
+    2. Wordpress, Drupal - all tables have well-known naming convention 
+
+
+Prevention -- validate your input
+    1. Filter out special characters
+    2. Limit data and privileges that a database
+    2. Use prepared statements (e.g. Python)
+
+
+------
+
+Other attacks
+
+1. Traversal - "just asking for it"
+    Directory traversal attack - can see files that you aren't supposed to
+    e.g. get the shadow, passwd files
+    Has been patched in apache, nginx
+    Still a problem with WordPress sites, e.g. wp-admin
+    Prevention: set ht_access, don't run server in root, set appropriate file permissions
+
+2. Cross-site request forgery
+    Malicious website sends a request to a web application that a user is already
+    Authenticated against from a different website
+    Prevention: append unpredictable token to each request
+
+3. Cookie tampering
+    Parameter tampering: MiTM proxy to modify request before sending to server (e.g Tamper Data for Firefox)
+    Cookies save information from visits to website (e.g shopping cart contents, whether you are logged in)
+    Can modify cookies before you send them to server
+    Prevention: server-side input validation
+
+4. Remote code execution
+    Attacker can execute code from a remote server
+
+    SQL injection in forms, or URL
+    http://67.23.79.113/hackme.php?id=system(%22ls%20-la%20/%22);
+
+    Prevention: don't use eval function, which evaluates strings as code
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
