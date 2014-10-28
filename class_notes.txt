@@ -38,7 +38,6 @@ Need to know names of database
     1. Guess - common names are 'users', 'account', etc
     2. Wordpress, Drupal - all tables have well-known naming convention 
 
-
 Prevention -- validate your input
     1. Filter out special characters
     2. Limit data and privileges that a database
@@ -76,9 +75,18 @@ Other attacks
     Prevention: don't use eval function, which evaluates strings as code
 
 
+----
+Capture the Flag notes
+
+<!-- Hmmm, the plot thickens... key{fcb26d5bbe8d9c813034ee6a2b40eb35a96c7ff4}-->
 
 
+Wordpress login
+0?):bFb?N78*c-L
 
+karl username, user fireforce to brute force the password
+key was in a private post called 'Congratulations'
+I change the password...
 
 
 
