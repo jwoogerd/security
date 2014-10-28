@@ -1,0 +1,72 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{enumerate}
+
+\begin{document}
+Jayme Woogerd \\
+\indent Comp 116 - Computer Security \\
+\indent October 29, 2014 \\
+\indent Final Project Outline
+
+\section*{Biocryptography: The Future of User Authentication?}
+\begin{enumerate}[I.]
+\item Introduction
+\item To the community
+    \begin{enumerate}[A.]
+    \item Why I chose this topic
+        \begin{enumerate}[1.]
+        \item Frustration with current state of user authentication systems
+        \item Curiosity: are biometric systems as seen in popular culture (e.g. \textit{Minority Report}) feasible? Creepy? Legal? "Better" than current traditional authentication systems?
+        \end{enumerate}
+    \item Why is this important?
+        \begin{enumerate}[1.]
+        \item We already have a problem with password management (or lack thereof)
+        \item The problem with password breaches is only going to get worse
+        \end{enumerate}
+    \end{enumerate}
+\item Traditional methods in cryptography and their shortcomings
+    \begin{enumerate}[A.]
+    \item Brief overview of cryptography
+        \begin{enumerate}[1.]
+        \item General idea and definitions
+        \item Private-key encryption and AES
+        \item Public-key encryption
+        \end{enumerate}
+    \item Shortcomings
+        \begin{enumerate}[1.]
+        \item Knowledge such as passwords and PINs can be easily forgotten (some stats about the average number of passwords people have to manage?)
+        \item Passwords and PINs can be guessed using social engineering or dictionary/wordlist attacks (stats about breaches, etc?)
+        \item Tokens like key or cards can be stolen or misplaced
+        \end{enumerate}
+    \end{enumerate}
+\item Traditional areas of biometrics and their shortcomings
+     \begin{enumerate}[A.]
+    \item Brief overview of biometrics and biometric systems 
+        \begin{enumerate}[1.]
+        \item General idea and definitions
+        \item Fingerprint systems
+        \end{enumerate}
+    \item Shortcomings 
+        \begin{enumerate}[1.]
+        \item Accuracy, security, and privacy challenges
+        \item Biometric system attacks
+        \end{enumerate}
+    \end{enumerate}
+\item Biocryptography methods and applications
+    \begin{enumerate}[A.]
+    \item General overview and template protection
+    \item Fingerprint Fuzzy-Vault Algorithm
+    \item Others?
+    \end{enumerate}
+\item Conclusion
+\end{enumerate}
+
+\textbf{Implementation}: I plan to use a cheap fingerprint scanner or fingerprint images to implement a proof-of-concept biometric system using the Fuzzy-Vault algorithm to encrypt fingerprint data.
+\nocite{*}
+\bibliography{biblio}{}
+\bibliographystyle{plain}
+
+(I plan to have many more sources; this is just a preliminary list.)
+\end{document}
