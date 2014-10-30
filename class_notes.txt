@@ -88,6 +88,67 @@ karl username, user fireforce to brute force the password
 key was in a private post called 'Congratulations'
 I change the password...
 
+----
+
+Capture the Flag recap
+
+    - in the real world, no hints
+    - we usually build, not break
+    - how to think like a bad guy
+
+Next: prevention
+    1. Code review
+    2. Static analysis
+    3. Learn what not to do
+
+1. Just ask for it: /flag.txt
+
+2. Packed refs: /.git/packed-refs
+    - git folder has source code, configuration
+
+3. Analyze the binary: the extension is wrong, tcpdump capture file
+    'strings' command
+
+4. SQL injection in address bar 
+    payload = 'or 1 = 1'
+
+5. Also SQL injection in username 
+    payload = a' or '1' = '1'
+    http://67.23.79.113/admin.php?
+
+6. cookie tampering; change lg cookie to 'true' on main.php
+
+7. go to /logout.php
+
+8. SQL injection (union)
+    - get table data from other tables
+    - use SQLMAP, which automates injections
+
+9. Not Global: look at local storage; 
+   see base64 string (binary to text encoding scheme) 
+   decode the string
+
+10. Brute-force WordPress password
+    - internet service provider can provide throttling to 
+    prevent many requests to the same URL
+
+---
+
+static and dynamic analysis of programs
+
+static - no execution of the code
+    1. binary (black box)
+    2. code (code review, white box)
+        e.g. linters
+
+    - full code coverage
+    - can look for obvious code flaws
+    - can't find flaws that depend on environment, e.g. imports
+
+dynamic - system execution (trial and error in a real runtime environment)
+    - no guarantee of full coverage
+    - e.g. valgrind
+
 
 
 
