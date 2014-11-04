@@ -1,4 +1,4 @@
-SQL injections
+    SQL injections
 -----
 
 Craft input that mangles a SQL statement to return or do unexpected
@@ -147,7 +147,48 @@ static - no execution of the code
 
 dynamic - system execution (trial and error in a real runtime environment)
     - no guarantee of full coverage
-    - e.g. valgrind
+    - e.g. Valgrind
+
+---
+
+* More static and dynamic analysis *
+
+What is static analysis?
+    - Analyzing code or binary without executing it
+    - Binary static analysis: decompiles and creates a graph of all the 
+      branches of the control flow
+    Pros:
+        - full code coverage
+    Cons:
+        - can't detect runtime and environment flaws 
+        - can't find configuration issues
+        - hard to prove results are actual vulnerabilities
+
+
+What is dynamic analysis?
+    - Analyzing code by executing it (e.g. Valgrind)
+        Pros:
+        - can see what happens depending on real variables
+        - can detect dependencies
+        Cons:
+            - no guarantee of full code coverage
+
+How does static analysis work?
+    1. Data flow analysis - captures data, control paths and graphs them
+    2. Control graphs
+    3. Taint analysis (e.g user input is always "contaminated", tainted,
+       untrusted)
+    4. Lexical analysis 
+        - parse the source code?
+        - use grep to find stuff like strcpy in C --> buffer overflow
+
+Assignment 4: Risk assessment
+
+
+
+
+
+
 
 
 
