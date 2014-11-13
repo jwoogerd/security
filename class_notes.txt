@@ -184,6 +184,51 @@ How does static analysis work?
 
 Assignment 4: Risk assessment
 
+---
+November 14, 2014
+
+Today's topic: Malware - malicious software
+
+    - pop-ups, stealing information, ransom-ware
+    - rampant in the Google Play store
+
+Malware types:
+
+    1. Virus - can spread by user opening files, piggybacks
+        from user to user sharing files
+
+    2. Worm - only works on networks, spreads through the
+        network
+            - can use known_hosts file
+            - server logs
+            - port scanning
+            - service discovery
+        First worm: Morris worm
+
+    3. Trojan horse - you think you download a legit
+        software, but it's actually malicious software
+
+    4. Backdoor - software that gives unauthorized access 
+        to your computer
+            - open a port on a server, anyone that connects
+            to this port you get access to cmd.exe or terminal
+            - e.g tini - written in assembly(!)
+                while running, an attacker can connect
+                through telnet or netcat (nc)
+
+    5. Rootkit - gives superuser access to an attacker 
+        for a long time, undetected
+
+    6. Botnet
+
+
+www.virustotal.com - scans files, urls for known viruses
+can change the binary with a hex editor, change the port
+number of tini.ext
+
+
+
+
 
 
 
