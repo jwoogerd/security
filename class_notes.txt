@@ -226,6 +226,15 @@ www.virustotal.com - scans files, urls for known viruses
 can change the binary with a hex editor, change the port
 number of tini.ext
 
+---
+December 2, 2014
+
+Quiz 3 -- one page, double-spaced, vocabulary
+
+Assignment 5 notes:
+
+ Part 1 -- go through wordlist from John the Ripper on image, write script 
+ that runs through wordlist
 
 
 
