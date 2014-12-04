@@ -237,6 +237,43 @@ Assignment 5 notes:
  that runs through wordlist
 
 
+---
+December 4, 2014
+
+Topics we didn't cover:
+
+    - Electronic voting
+    - Digital Rights Management (DRM)
+    - Cyber warfare
+    - Cyber policies, laws
+    - MMORPGs + online game security
+    - HTML5 security
+    - cloud security
+    - IPv6
+    - SCADA systems
+    - security management
+    - crypto-currency
+    - buffer overflows
+
+Applied Cryptography by Bruce Schneider
+Coursera Standford course
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
