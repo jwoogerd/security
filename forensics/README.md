@@ -41,7 +41,7 @@ the Ripper to crack the user and password lists in `/etc/passwrd` and
 `/etc/shadow`, respectively.
 
 6. Yes, there are additional user accounts:
-        alejandro:
+        alejandro: pokerface
         judas:     00000000
         stefani:   iloveyou
 
