@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage{enumerate}
+\usepackage{setspace}
+\usepackage{url}
+
+
+\begin{document}
+
+\author{Jayme Woogerd}
+\title{Biocryptography \\ {\large The Future of User Authentication?}}
+\maketitle
+
+\section*{Abstract}
+In traditional cryptography, authentication relies on some sort of shared knowledge,
+usually a secret password or token. In today's wired world, these types of password
+authentication systems are pervasive -- however, they face several fundamental
+problems, chief of which that they cannot distinguish between genuine users and
+attackers using stolen credentials. Biometric systems solve these problems by 
+using physical characteristics to uniquely identify genuine users. However, 
+these systems come with their unique set of vulnerabilities.
+
+At the intersection of biometrics and traditional cryptography 
+lies biocryptography, which fuses the strengths of both types of 
+authentication systems. This project explores the state-of-the-art strategies 
+in biocryptography to provide systems that are both accurate and robust to attacks.
+
+\doublespacing
+\section{Introduction}
+In traditional cryptography, authentication relies on some sort of shared knowledge,
+usually a secret password or token. In today's wired world, these types of password
+authentication systems are pervasive -- however, they face several fundamental
+problems, chief of which that they cannot distinguish between genuine users and
+attackers using stolen credentials. Additionally, users are forced to manage 
+multiple accounts with multiple passwords.  \\
+Biometric systems solve these problems by using characteristics like fingerprints,
+irises, even ear shape to uniquely identify genuine users. However, these
+systems come with their unique set of vulnerabilities: what happens if a user's
+biometric data is compromised? A password can be easily reset...but a fingerprint
+certainly cannot. At the intersection of biometrics and traditional cryptography
+lies biocryptography, which fuses the strengths of both types of authentication systems.
+This paper explores the state-of-the-art strategies in biocryptography to
+provide systems that accurately authenticate genuine users and are robust to 
+traditional biometric attacks.
+
+\section{To the Community}
+    \begin{enumerate}[A.]
+    \item Why I chose this topic
+    Frustration with current state of user authentication systems
+    Curiosity: are biometric systems as seen in popular culture (e.g. \textit{Minority Report}) feasible? Creepy? Legal? "Better" than current traditional authentication systems?
+    \item Why is this important?
+        \begin{enumerate}[1.]
+        \item We already have a problem with password management (or lack thereof)
+        \item The problem with password breaches is only going to get worse
+        \end{enumerate}
+    \end{enumerate}
+\section{Traditional Cryptography}
+    \begin{enumerate}[A.]
+    \item Brief overview of cryptography
+        \begin{enumerate}[1.]
+        \item General idea and definitions
+        \item Private-key encryption and AES
+        \item Public-key encryption
+        \end{enumerate}
+    \item Shortcomings
+        \begin{enumerate}[1.]
+        \item Knowledge such as passwords and PINs can be easily forgotten (some stats about the average number of passwords people have to manage?)
+        \item Passwords and PINs can be guessed using social engineering or dictionary/wordlist attacks (stats about breaches, etc?)
+        \item Tokens like key or cards can be stolen or misplaced
+        \end{enumerate}
+    \end{enumerate}
+\section{Traditional Biometrics}
+     \begin{enumerate}[A.]
+    \item Brief overview of biometrics and biometric systems 
+        \begin{enumerate}[1.]
+        \item General idea and definitions
+        \item Fingerprint systems
+        \end{enumerate}
+    \item Shortcomings 
+        \begin{enumerate}[1.]
+        \item Accuracy, security, and privacy challenges
+        \item Biometric system attacks
+        \end{enumerate}
+    \end{enumerate}
+\section{Biocryptographic Methods and Applications}
+    \begin{enumerate}[A.]
+    \item General overview and template protection
+    \item Fingerprint Fuzzy-Vault Algorithm
+    \item Others?
+    \end{enumerate}
+\section{Conclusion}
+
+\singlespace
+\nocite{*}
+\bibliography{biblio}{}
+\bibliographystyle{plain}
+
+\end{document}
