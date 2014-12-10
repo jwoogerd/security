@@ -43,55 +43,75 @@ provide systems that accurately authenticate genuine users and are robust to
 traditional biometric attacks.
 
 \section{To the Community}
-    \begin{enumerate}[A.]
-    \item Why I chose this topic
-    Frustration with current state of user authentication systems
-    Curiosity: are biometric systems as seen in popular culture (e.g. \textit{Minority Report}) feasible? Creepy? Legal? "Better" than current traditional authentication systems?
-    \item Why is this important?
-        \begin{enumerate}[1.]
-        \item We already have a problem with password management (or lack thereof)
-        \item The problem with password breaches is only going to get worse
-        \end{enumerate}
-    \end{enumerate}
-\section{Traditional Cryptography}
-    \begin{enumerate}[A.]
-    \item Brief overview of cryptography
-        \begin{enumerate}[1.]
-        \item General idea and definitions
-        \item Private-key encryption and AES
-        \item Public-key encryption
-        \end{enumerate}
-    \item Shortcomings
+According to the results of an online registration and password study conducted 
+by Janrain in 2012, 58 percent of adults have five or more unique 
+passwords associated with their online logins and 30 percent of people have 
+more than 10 unique passwords they need to remember. Additionally, almost 2 in 
+5 (37\%) have to ask for assistance on their user name or password for at least 
+one website per month \cite{Janrain12}.
+
+The current models for user authentication have created a ridiculous situation:
+on the one hand, experts implore us that a password should be long, random (and 
+therefore not memorable) and unique so as to be resistant to cracking, but on
+the other hand, we have to create, keep track of, and periodically change 
+credentials for \textit{every single} service we sign up for. Anecdotally, for 
+most people convenience trumps security and they end up using (and reusing) 
+weak passwords over and over again.
+
+    The problem with password breaches is only going to get worse
+
+Thus, the original motivation for this project was my own frustration with the
+current state of user authentication systems. It's deeply unsatisfying that so 
+much of the onus is on the user to manage and secure her own credentials. Therefore, this project explores an alternative to a password-based 
+authentication system: biometric systems and the biocrytographic methods used 
+to secure them. I wanted to know if biometric systems as seen in popular 
+culture (e.g. \textit{Minority Report}) are even feasible and if so, in what 
+ways are they better than current traditional authentication systems.
+\section{Traditional Cryptography and Authentication}
+The basic idea in cryptography is to allow two entities to send and receive 
+messages to each other securely and confidentially in the presence of a 
+third-party, or adversary. This is done through the process of data 
+\textit{encryption}, that is, transforming the message into an unreadable form 
+to anyone who does not know how to decrypt it. In general, there are four 
+main goals of modern cryptography: 1) confidentiality, 2) data integrity, 
+3) non-repudiation, and 4) authentication \cite{Biocryptography10}.
+
+% In modern cryptography, there are 
+% two main flavors of encryption algorithms: symmetric- or private-key 
+% encryption and asymmetric or public-key encryption.
+    \subsection{Authentication Systems}
+    \subsection{Shortcomings}
         \begin{enumerate}[1.]
         \item Knowledge such as passwords and PINs can be easily forgotten (some stats about the average number of passwords people have to manage?)
         \item Passwords and PINs can be guessed using social engineering or dictionary/wordlist attacks (stats about breaches, etc?)
         \item Tokens like key or cards can be stolen or misplaced
         \end{enumerate}
-    \end{enumerate}
-\section{Traditional Biometrics}
-     \begin{enumerate}[A.]
-    \item Brief overview of biometrics and biometric systems 
-        \begin{enumerate}[1.]
-        \item General idea and definitions
-        \item Fingerprint systems
-        \end{enumerate}
-    \item Shortcomings 
+\section{Biometrics}
+Rather than relying on a shared secret or key, in biometric systems, 
+authentication relies on the physiological or behavior features of a person. 
+Genuine users are recognized using characteristics like fingerprints,
+irises, or even ear shape. Biometric systems can be more reliable than traditional
+password-based systems because biometric features cannot be lost or forgotten
+and they are difficult to copy or forge and to share or distribute \cite{Fingerprint07}. 
+\subsection{Fingerprint Systems}
+Fingerprint systems are the oldest and most commonly used systems in biometrics.
+\subsection{Shortcomings}
         \begin{enumerate}[1.]
         \item Accuracy, security, and privacy challenges
         \item Biometric system attacks
         \end{enumerate}
-    \end{enumerate}
 \section{Biocryptographic Methods and Applications}
-    \begin{enumerate}[A.]
-    \item General overview and template protection
-    \item Fingerprint Fuzzy-Vault Algorithm
-    \item Others?
-    \end{enumerate}
+Because of the characteristics of fingerprint images, traditional methods like 
+DES and RSA cannot be used for encryption. There characteristics include 
+bulk data capacity and high correlation among pixels.
+    \subsection{General overview and template protection}
+    \subsection{Fingerprint Fuzzy-Vault Algorithm}
 \section{Conclusion}
 
 \singlespace
 \nocite{*}
+
 \bibliography{biblio}{}
-\bibliographystyle{plain}
+\bibliographystyle{apalike}
 
 \end{document}
