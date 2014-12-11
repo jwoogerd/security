@@ -148,14 +148,15 @@ Biometric systems come with their own set of unique attack vectors; according
 to Ratha et al, they can be categorized into eight types \cite{Ratha01ananalysis}:
         \begin{enumerate}[1., topsep=0pt]
     \singlespace
-        \item Fake biometric: attacker uses a reproduction of the biometric, e.g. a fake finger
-        \item Replay attack: attacker replays an old recorded signal, e.g. presenting old copy of fingerprint image
+        \item Fake biometric: attacker uses a reproduction of the biometric, e.g. a fake fingerprint
+        \item Replay attack: attacker replays an old recorded signal, e.g. presents old copy of fingerprint image to the system
         \item Override feature extract: Attacker plants a Trojan horse in 
-        the feature extractor so that it produces feature sets chosen by her
+        the feature extractor so that it produces a feature set that the 
+        attack chose
         \item Override matcher: Attacker tampers with matcher to produce
         artificially high or low match rates
         \item Tamper with the feature representation: Attacker replaces
-        extracted feature set with a different synthesized one
+        extracted feature set with a different, synthesized one
         \item Tamper with stored templates: Attacker tampers with database
         holding the templates, e.g modifies a template to result in fraudulent 
         authorization for an individual 
@@ -167,13 +168,20 @@ to Ratha et al, they can be categorized into eight types \cite{Ratha01ananalysis
     \doublespace
 
 \section{Biocryptographic Methods and Applications}
+According to Xi and Hu, among the types of attacks against biometric systems,
+those targeting templates can be hard to detect and can cause the most damage.
+\cite{Biocryptography10} Therefore, for a system to be secure, biometric 
+templates should always be encrypted, both when stored and during 
+the matching process. However, because of the characteristics of biometric 
+data, traditional methods that use non-smooth functions, like DES and RSA, 
+cannot be used for encryption \cite{Fingerprint07}. For example, given a 
+feature set derived from a fingerprint, even tiny variances in the plaintext 
+feature set will produce wildly different encrypted feature sets, making 
+it impossible to do feature matching using encrypted templates.
 
 \subsection{Template Protection}
-Fingerprint systems are the oldest and most commonly used systems in biometrics.
-However, because of the characteristics of fingerprint images, traditional 
-methods like DES and RSA cannot be used for encryption. There 
-characteristics include bulk data capacity and high correlation among 
-pixels \cite{Fingerprint07}.
+
+\subsection{Fingerprint Fuzzy Vault}
 
 \section{Conclusion}
 Password-based authentication systems, though pervasive, are problematic in
