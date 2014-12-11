@@ -179,9 +179,40 @@ feature set derived from a fingerprint, even tiny variances in the plaintext
 feature set will produce wildly different encrypted feature sets, making 
 it impossible to do feature matching using encrypted templates.
 
-\subsection{Template Protection}
+\subsection{Template Encryption}
+In general, to encrypt a template, \textit{T} we use a secret key, \textit{$K_E$}
+and an encryption algorithm, \textit{E}, such that the encrypted version, 
+\textit{C} is given by: \\
+\indent C = E (T, $K_E$)
+\\ Then, to decrypt, we apply a decryption algorithm, \textit{D} to \textit{C} 
+and a decryption key \textit{$K_D$} to get the template back: \\
+\indent T = D (C, $K_D$).
+\\One biocryptographic technique is called key binding, in which the secret key
+and the biometric data (i.e. the template) are combined to produce an artifact
+in which both the template and the key are hidden. This artifact can then be
+shared publicly since it is computationally infeasible to decrypt the artifact
+directly \cite{Biocryptography10}.
 
-\subsection{Fingerprint Fuzzy Vault}
+\subsubsection{Fingerprint Fuzzy Vault}
+A key-binding scheme proposed by Juels and Sudan is called the fuzzy vault 
+algorithm \cite{Juels:2006:FVS:1110940.1110956}. This algorithm is especially
+applicable to biometric data because it is \textit{error-tolerant} and 
+invariant to order. That is, data can be encoded using a set of values (e.g. a
+biometric feature set), and then unlocked with a \textit{different} set of 
+values as long as there is some threshold of overlap between the sets. Order
+invariance means that it does not matter which of the sets is used for 
+locking and which is used for unlocking.
+
+The basic algorithm works as follows: given a secret key and a template (i.e.
+feature set), first encode the key as the coefficients of a polynomial function,
+\textit{p(x)}. Apply \textit{p(x)} to every value in the feature set to 
+produce a set of points that genuinely describes the polynomial. Then, to obscure
+the template data, generate a "chaff" set, points that are within the domain
+and range but do not lie on the polynomial. Finally, combine the two sets and 
+scramble the order -- this set of points is the "fuzzy vault".
+To decrypt the fuzzy vault, use the feature set provided by a user. If enough
+of the points match the set used to encode the data within a given error, the
+polynomial can be reconstructed and thus the secret key revealed. 
 
 \section{Conclusion}
 Password-based authentication systems, though pervasive, are problematic in
@@ -191,11 +222,7 @@ cannot distinguish between a genuine user and an attacker using stolen credentia
 to uniquely identify genuine users, but come with their own set of challenges
 and vulnerabilities. At the intersection of biometrics and cryptography 
 lies biocryptography, the study of specialized cryptographic methods for 
-securing biometrics systems. 
-
-% This paper explores the state-of-the-art 
-% strategies in biocryptography to provide systems that accurately authenticate genuine users and are robust to traditional biometric attacks.
-
+securing biometrics systems.
 \singlespace
 \nocite{*}
 
