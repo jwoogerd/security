@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
-\usepackage{enumerate}
 \usepackage{setspace}
 \usepackage{url}
+\usepackage[shortlabels]{enumitem}
 
 
 \begin{document}
@@ -19,9 +19,9 @@ attackers using stolen credentials. Biometric systems solve these problems by
 using physical characteristics to uniquely identify genuine users. However, 
 these systems come with their unique set of vulnerabilities.
 
-At the intersection of biometrics and traditional cryptography 
-lies biocryptography, which fuses the strengths of both types of 
-authentication systems. This project explores the state-of-the-art strategies 
+At the intersection of biometrics and traditional cryptography lies 
+biocryptography, the study of cryptographic methods for securing biometric 
+systems. This project explores the state-of-the-art strategies 
 in biocryptography to provide systems that are both accurate and robust to attacks.
 
 \doublespacing
@@ -37,16 +37,16 @@ irises, even ear shape to uniquely identify genuine users. However, these
 systems come with their unique set of vulnerabilities: what happens if a user's
 biometric data is compromised? A password can be easily reset...but a fingerprint
 certainly cannot. At the intersection of biometrics and traditional cryptography
-lies biocryptography, which fuses the strengths of both types of authentication systems.
-This paper explores the state-of-the-art strategies in biocryptography to
-provide systems that accurately authenticate genuine users and are robust to 
-traditional biometric attacks.
+lies biocryptography, the study of specialized cryptographic methods for securing 
+biometrics systems. This paper explores the state-of-the-art strategies in 
+biocryptography to provide systems that accurately authenticate genuine users 
+and are robust to traditional biometric attacks.
 
 \section{To the Community}
 According to the results of an online registration and password study conducted 
 by Janrain in 2012, 58 percent of adults have five or more unique 
 passwords associated with their online logins and 30 percent of people have 
-more than 10 unique passwords they need to remember. Additionally, almost 2 in 
+more than ten unique passwords they need to remember. Additionally, almost 2 in 
 5 (37\%) have to ask for assistance on their user name or password for at least 
 one website per month \cite{Janrain12}.
 
@@ -58,7 +58,13 @@ credentials for \textit{every single} service we sign up for. Anecdotally, for
 most people convenience trumps security and they end up using (and reusing) 
 weak passwords over and over again.
 
-    The problem with password breaches is only going to get worse
+The situation is exacerbated by the fact that the entities we trust to secure
+our passwords are not secure themselves: if anything it seems the frequency with
+which we are hearing about major security breaches (e.g. LinkedIn, Target, Sony)
+is increasing. From the LinkedIn breach on June 5, 2012 alone, hackers 
+gained access to 6.5 million user passwords -- and had cracked and posted 
+in cleartext more than 60\% of the unique passwords by the next 
+day \cite{ComputerWorld}.
 
 Thus, the original motivation for this project was my own frustration with the
 current state of user authentication systems. It's deeply unsatisfying that so 
@@ -67,46 +73,120 @@ authentication system: biometric systems and the biocrytographic methods used
 to secure them. I wanted to know if biometric systems as seen in popular 
 culture (e.g. \textit{Minority Report}) are even feasible and if so, in what 
 ways are they better than current traditional authentication systems.
-\section{Traditional Cryptography and Authentication}
-The basic idea in cryptography is to allow two entities to send and receive 
-messages to each other securely and confidentially in the presence of a 
-third-party, or adversary. This is done through the process of data 
-\textit{encryption}, that is, transforming the message into an unreadable form 
-to anyone who does not know how to decrypt it. In general, there are four 
-main goals of modern cryptography: 1) confidentiality, 2) data integrity, 
-3) non-repudiation, and 4) authentication \cite{Biocryptography10}.
 
-% In modern cryptography, there are 
-% two main flavors of encryption algorithms: symmetric- or private-key 
-% encryption and asymmetric or public-key encryption.
-    \subsection{Authentication Systems}
-    \subsection{Shortcomings}
-        \begin{enumerate}[1.]
-        \item Knowledge such as passwords and PINs can be easily forgotten (some stats about the average number of passwords people have to manage?)
-        \item Passwords and PINs can be guessed using social engineering or dictionary/wordlist attacks (stats about breaches, etc?)
-        \item Tokens like key or cards can be stolen or misplaced
-        \end{enumerate}
-\section{Biometrics}
+\section{Cryptography}
+In cryptography, the basic idea is to allow two entities to send and receive 
+messages to each other securely and confidentially in the presence of a 
+third-party, or \textit{adversary}. This is done through the process of data 
+\textit{encryption}, that is, transforming the message into an unreadable form 
+to anyone who does not know how to decrypt it. Traditionally, the 
+cryptographic process involves using an \textit{encryption algorithm} and 
+a \textit{cryptographic key} to turn an original message in \textit{plaintext}
+into a scrambled, unreadable one, i.e. in \textit{cypertext}. 
+
+\subsection{Encryption Algorithms}
+In modern cryptography, there are two main flavors of encryption algorithms: 
+symmetric- or private-key encryption and asymmetric or public-key encryption.
+Symmetric-key encryption algorithms use the same cryptographic key and algorithm to
+both encrypt plaintext into cyphertext and decrypt the cyphertext back into
+plaintext. Among the most widely used symmetric-key algorithm is the Data 
+Encryption Standard (DES). Asymmetric-key systems involve pairs of keys, which
+are generated together: a public key for encryption and a private key for 
+decryption. As the name suggests, the public key is shared publicly and can
+be used by someone else to encrypt data to send to you. Data encrypted with this 
+public key can only be decrypted using the private key, which you keep secret.
+A common symmetric-key algorithm is RSA, named for its creators Rivest, 
+Shamir, and Adleman \cite{Biocryptography10}.
+
+\section{Authentication Systems}
+In general, there are four main goals of modern cryptography: 1) 
+confidentiality, 2) data integrity, 3) non-repudiation, and 4) 
+authentication \cite{Biocryptography10}. The last goal, authentication, concerns
+itself with verifying claims of identity. In the context of sending a message, 
+the sender and receiver should be able to confirm the other's identity and 
+the origin of the message. Authentication is distinguished from 
+\textit{authorization}, which is the process of giving a party access to a
+system or data based on the confirmation of their identity.
+
+In a knowledge-based authentication systems, a user's identity is verified 
+via a piece of knowledge: a password, pass phrase, or a personal 
+identification number (PIN). However, there are several shortcomings to this
+method: 1) As illustrated above, knowledge such as passwords and PINs can be 
+easily forgotten, 2) Passwords and PINs can be guessed using social engineering
+3) Even encrypted passwords are easily cracked with brute-forced and/or 
+wordlist attacks 4) Passwords and PINs are easy to distribute and share in 
+plaintext and 5) A password-based system cannot distinguish a genuine user from
+an attacker using stolen or forged credentials.
+
+\subsection{Biometric Authentication Systems}
 Rather than relying on a shared secret or key, in biometric systems, 
 authentication relies on the physiological or behavior features of a person. 
 Genuine users are recognized using characteristics like fingerprints,
-irises, or even ear shape. Biometric systems can be more reliable than traditional
+irises, or even ear shape \cite{Biocryptography10}. 
+
+
+In general, biometric systems comprise of five separate elements. A 
+\textit{biometric sensor} reads in the biometric information and usually 
+does some quality checking on the sample, e.g. a fingerprint reader. The 
+\textit{feature extractor} consumes this raw biometric information and pulls 
+out a relevant feature set (or template) that represents the data. In a 
+fingerprint system, these features would include minutiae details that 
+characterize the fingerprint. The \textit{matcher} or \textit{matching model}
+matches this sample template against a pre-stored template and comes up with
+a score, i.e. the extent to which the sample matches the pre-stored template. Finally, it is common for systems to use a \textit{database} to store known 
+templates.
+
+Biometric systems can be more reliable than traditional
 password-based systems because biometric features cannot be lost or forgotten
-and they are difficult to copy or forge and to share or distribute \cite{Fingerprint07}. 
-\subsection{Fingerprint Systems}
-Fingerprint systems are the oldest and most commonly used systems in biometrics.
-\subsection{Shortcomings}
-        \begin{enumerate}[1.]
-        \item Accuracy, security, and privacy challenges
-        \item Biometric system attacks
+and they are difficult to copy or forge and to share or distribute \cite{Fingerprint07}. However, they are not without their own set of issues including 
+those of accuracy (i.e. false positive and negative matches), security (e.g.
+unlike a password it is impossible to replace a person's stolen biometric information), and privacy. Moreover, biometric systems are not impervious to 
+attack, a biometric system comes with its own set of vulnerabilities.
+
+\subsection{Biometric System Attacks}
+Biometric systems come with their own set of unique attack vectors; according
+to Ratha et al, they can be categorized into eight types \cite{Ratha01ananalysis}:
+        \begin{enumerate}[1., topsep=0pt]
+    \singlespace
+        \item Fake biometric: attacker uses a reproduction of the biometric, e.g. a fake finger
+        \item Replay attack: attacker replays an old recorded signal, e.g. presenting old copy of fingerprint image
+        \item Override feature extract: Attacker plants a Trojan horse in 
+        the feature extractor so that it produces feature sets chosen by her
+        \item Override matcher: Attacker tampers with matcher to produce
+        artificially high or low match rates
+        \item Tamper with the feature representation: Attacker replaces
+        extracted feature set with a different synthesized one
+        \item Tamper with stored templates: Attacker tampers with database
+        holding the templates, e.g modifies a template to result in fraudulent 
+        authorization for an individual 
+        \item Attack communication channel: Attack tampers with the templates 
+        when the are enroute from storage database to the matcher
+        \item Decision override: Recognition system works as expected but
+        attacker changes final authentication decision at the last step 
         \end{enumerate}
+    \doublespace
+
 \section{Biocryptographic Methods and Applications}
-Because of the characteristics of fingerprint images, traditional methods like 
-DES and RSA cannot be used for encryption. There characteristics include 
-bulk data capacity and high correlation among pixels.
-    \subsection{General overview and template protection}
-    \subsection{Fingerprint Fuzzy-Vault Algorithm}
+
+\subsection{Template Protection}
+Fingerprint systems are the oldest and most commonly used systems in biometrics.
+However, because of the characteristics of fingerprint images, traditional 
+methods like DES and RSA cannot be used for encryption. There 
+characteristics include bulk data capacity and high correlation among 
+pixels \cite{Fingerprint07}.
+
 \section{Conclusion}
+Password-based authentication systems, though pervasive, are problematic in
+that users must manage many sets of credentials, creating an incentive to use
+and reuse weak, easy to crack passwords. Furthermore, a password-based system
+cannot distinguish between a genuine user and an attacker using stolen credentials. Biometric systems solve these problems by using physiological characteristics 
+to uniquely identify genuine users, but come with their own set of challenges
+and vulnerabilities. At the intersection of biometrics and cryptography 
+lies biocryptography, the study of specialized cryptographic methods for 
+securing biometrics systems. 
+
+% This paper explores the state-of-the-art 
+% strategies in biocryptography to provide systems that accurately authenticate genuine users and are robust to traditional biometric attacks.
 
 \singlespace
 \nocite{*}
