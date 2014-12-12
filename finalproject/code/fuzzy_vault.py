@@ -2,10 +2,8 @@
 # Comp 116 - Security
 # December 12, 2014
 
-# to run: python
 
-#from sys import argv
-from random import uniform
+from random import (uniform, shuffle)
 import numpy
 
 degree = 4 # degree 4 polynomial
@@ -32,7 +30,7 @@ def p_x(x, coeffs):
     for coeff in coeffs:
         y += x**degree * coeff
         degree -= 1
-        
+
     return y
 
 def lock(secret, template):
@@ -49,7 +47,7 @@ def lock(secret, template):
         x_i = uniform(0, max_x * 1.1)
         y_i = uniform(0, p_x(max_x, coeffs) * 1.1)
         vault.append([x_i, y_i])
-
+    shuffle(vault)
     return vault
 
 def approx_equal(a, b, epsilon):
@@ -77,14 +75,3 @@ def decode(coeffs):
             s += str(unichr(num % 100)).lower()
             num /= 100
     return s
-
-def main():
-    test = lock("this is a test", [0, 4, 1.232, 4.32, -1, .11, 3.2, .932, 1.2, -3.3])
-    coeffs = unlock([0.1, 3.9, 1.332, 4.12, -1.1, .01, 3.1, .832, 1.3, -3.4], test)
-    print decode(coeffs)
-
-if __name__ == '__main__':
-    main()
-
-# with open(argv[1], 'r') as f:
-#     lines = f.readlines()
