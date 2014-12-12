@@ -1,5 +1,4 @@
-####Biocryptography
----
+##Biocryptography
 
 A final project for Comp 116 - Computer Security  
 by Jayme Woogerd
