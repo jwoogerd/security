@@ -214,15 +214,19 @@ To decrypt the fuzzy vault, use the feature set provided by a user. If enough
 of the points match the set used to encode the data within a given error, the
 polynomial can be reconstructed and thus the secret key revealed \cite{Biocryptography10,Juels:2006:FVS:1110940.1110956}. 
 
+As a proof of concept, I have implemented a 
+simple "biometric" authentication system using the fuzzy vault
+algorithm to encrypt identity/fingerprint pairs. The
+code is available publicly at \url{https://github.com/jwoogerd/fuzzy_vault}.
+
 \section{Conclusion}
 Password-based authentication systems, though pervasive, are problematic in
 that users must manage many sets of credentials, creating an incentive to use
 and reuse weak, easy to crack passwords. Furthermore, a password-based system
 cannot distinguish between a genuine user and an attacker using stolen credentials. Biometric systems solve these problems by using physiological characteristics 
 to uniquely identify genuine users, but come with their own set of challenges
-and vulnerabilities. At the intersection of biometrics and cryptography 
-lies biocryptography, the study of specialized cryptographic methods for 
-securing biometrics systems.
+and vulnerabilities. Since many traditional cryptographic methods are unsuited to biometric data, the field of biocryptography explores the specialized 
+cryptographic methods for securing biometrics systems.
 \singlespace
 \nocite{*}
 
