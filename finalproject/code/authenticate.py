@@ -2,6 +2,11 @@
 # Comp 116 - Security
 # December 12, 2014
 
+# This file implements a simple authentication
+# system using the fuzzy vault algorithm.
+
+# to use: python authenticate.py fingerprints/jayme
+
 from vaults import vaults
 from fuzzy_vault import (unlock, decode)
 from sys import argv
